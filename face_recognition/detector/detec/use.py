@@ -1,7 +1,8 @@
 from os import path 
 import cv2
 import torch
-from base64 import b64decode
+from base64 import b64decode, decodebytes
+from binascii import a2b_base64
 from detector.detec.reconocedor import crear_diccionario_referencias, pipeline_deteccion_imagen
 from PIL import Image
 import io
@@ -20,10 +21,18 @@ class ReconocedorFacial():
                     verbose        = True
                   )
     
-    def image_detected(self,image):
-        print(len(image))
-        image = b64decode(image)
-  
+    def image_detected(self,ima):
+        print(type(ima))
+        print(len(ima))
+        print(ima)
+       
+        #try:
+        image = a2b_base64(ima)
+        print(type(image))
+        #except:
+        #    print("fallo")
+        #    return None
+            
         fig, ax = plt.subplots(figsize=(12, 7))
         image = Image.open(io.BytesIO(image))
 
