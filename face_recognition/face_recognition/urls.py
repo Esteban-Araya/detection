@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from detector.views import imag
+from detector.views import flecha,face_detect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', imag)
+    path('flecha/', flecha),
+    path('', face_detect),
 ]

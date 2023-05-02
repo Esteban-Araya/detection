@@ -1,12 +1,12 @@
 from os import path 
 import cv2
 import torch
-from base64 import b64decode, decodebytes
-from binascii import a2b_base64
+from base64 import b64decode
 from detector.detec.reconocedor import crear_diccionario_referencias, pipeline_deteccion_imagen
 from PIL import Image
 import io
 import matplotlib.pyplot as plt
+
 
 class ReconocedorFacial():
     def __init__(self) -> None:
@@ -21,21 +21,16 @@ class ReconocedorFacial():
                     verbose        = True
                   )
     
-    def image_detected(self,ima):
-        print(type(ima))
-        print(len(ima))
-        print(ima)
-       
-        #try:
-        image = a2b_base64(ima)
-        print(type(image))
-        #except:
-        #    print("fallo")
-        #    return None
-            
-        fig, ax = plt.subplots(figsize=(12, 7))
-        image = Image.open(io.BytesIO(image))
 
+    def recoconcedor_caras(self,image):
+        
+        image = b64decode(image)
+
+        fig, ax = plt.subplots(figsize=(12, 7))
+
+
+        image = Image.open(io.BytesIO(image))
+       
         detecciones = pipeline_deteccion_imagen(
         imagen = image,
         dic_referencia        = self.dic_referencias,
@@ -47,4 +42,5 @@ class ReconocedorFacial():
         ax                    = ax,
         verbose               = False
     )
+        
         return detecciones
