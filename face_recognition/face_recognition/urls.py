@@ -20,5 +20,5 @@ from detector.views import flecha,face_detect
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('flecha/', flecha),
-    path('', face_detect),
+    path('face/', face_detect),
 ]
