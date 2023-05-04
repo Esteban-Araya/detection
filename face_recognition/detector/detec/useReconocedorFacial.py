@@ -13,6 +13,11 @@ class ReconocedorFacial():
         direction = path.dirname(path.abspath(__file__))
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         
+        """ 
+        You need create a folder called "images" in this folder you'll create 
+        other folders with the name of the person, and in this new folder 
+        you'll put the photos with the person. 
+        """
         self.dic_referencias = crear_diccionario_referencias(
                     folder_path    = direction + "/images",
                     min_face_size  = 40,
