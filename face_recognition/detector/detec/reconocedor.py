@@ -40,7 +40,7 @@ logging.basicConfig(
 
 # Funciones para la detección, extracción, embedding, identificación y gráficos
 # ==============================================================================
-def detectar_caras(imagen: Union[Image.Image, np.ndarray],
+def detectar_caras(imagen: Union[PIL.Image.Image, np.ndarray],
                    detector: facenet_pytorch.models.mtcnn.MTCNN=None,
                    keep_all: bool        = True,
                    min_face_size: int    = 20,
@@ -850,14 +850,14 @@ def pipeline_deteccion_imagen(imagen: Union[PIL.Image.Image, np.ndarray],
     if len(bboxes) == 0:
         
         logging.info('No se han detectado caras en la imagen.')
-        """mostrar_bboxes(
+        mostrar_bboxes(
             imagen      = imagen,
             bboxes      = bboxes,
             ax          = ax
-        )"""
+        )
         
     else:
-        
+    
         caras = extraer_caras(
                     imagen = imagen,
                     bboxes = bboxes
@@ -874,12 +874,12 @@ def pipeline_deteccion_imagen(imagen: Union[PIL.Image.Image, np.ndarray],
                          threshold_similaridad = threshold_similaridad
                        )
 
-        """mostrar_bboxes(
+        mostrar_bboxes(
             imagen      = imagen,
             bboxes      = bboxes,
             identidades = identidades,
             ax          = ax
-        )"""
+        )
         return identidades
     
     

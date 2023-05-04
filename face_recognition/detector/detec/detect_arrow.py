@@ -3,7 +3,6 @@ import numpy as np
 from base64 import b64decode
 from PIL import Image
 import io
-from time import sleep
 
 
 def eliminar_puntos_cercanos(approx):
@@ -40,7 +39,7 @@ def isFlecha2(appr,image,orientacion):
     x,y,w,h = cv2.boundingRect(appr)
     flecha = image[y-17:y+h+17,x-17:x+w+17]
     
-    sleep(2)
+    
     flecha = cv2.resize(flecha,(300,300))
     
     try:
