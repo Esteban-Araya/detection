@@ -10,9 +10,9 @@ reconocedor = ReconocedorFacial()
 @csrf_exempt
 def face_detect(request):
     #print(request.body)
-    a = reconocedor.recoconcedor_caras(request.body)
+    person = reconocedor.recoconcedor_caras(request.body)
     
-    return JsonResponse({"a": a})
+    return JsonResponse({"person": person})
 
 
 @csrf_exempt
